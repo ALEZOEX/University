@@ -149,13 +149,53 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 9,
       "metadata": {
-        "id": "-fE6IUbrCNlR"
+        "id": "-fE6IUbrCNlR",
+        "outputId": "736a665e-3987-4b6b-d72f-bebeb26434d3",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
       },
-      "outputs": [],
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Вероятность выигрыша при смене двери: 66,82%\n",
+            "Вероятность выигрыша без смены двери: 33,18%\n"
+          ]
+        }
+      ],
       "source": [
-        "# Ваш код"
+        "import random\n",
+        "\n",
+        "\n",
+        "def monty_hall(iterations: int) -> None:\n",
+        "    \"\"\"Моделирует парадокс Монти Холла и выводит вероятности выигрыша.\n",
+        "\n",
+        "    :param iterations: Количество симулируемых раундов (игр).\n",
+        "    \"\"\"\n",
+        "\n",
+        "    doors = [0, 0, 1]\n",
+        "    switch_wins = 0\n",
+        "\n",
+        "    for _ in range(iterations):\n",
+        "        chosen_door = random.choice(doors)\n",
+        "        if chosen_door == 0:\n",
+        "            switch_wins += 1\n",
+        "\n",
+        "    stay_wins = iterations - switch_wins\n",
+        "\n",
+        "    switch_rate = (switch_wins / iterations) * 100\n",
+        "    stay_rate = (stay_wins / iterations) * 100\n",
+        "\n",
+        "    print(f\"Вероятность выигрыша при смене двери: {switch_rate:.2f}%\".replace(\".\", \",\"))\n",
+        "    print(f\"Вероятность выигрыша без смены двери: {stay_rate:.2f}%\".replace(\".\", \",\"))\n",
+        "\n",
+        "\n",
+        "\n",
+        "monty_hall(100000)\n"
       ]
     },
     {
@@ -250,13 +290,92 @@
     },
     {
       "cell_type": "code",
-      "execution_count": null,
+      "execution_count": 10,
       "metadata": {
         "id": "SF7PfOsOEtXJ"
       },
       "outputs": [],
       "source": [
-        "# Ваш код"
+        "import random"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "def birthday(iterations: int, people: int = 23) -> float:\n",
+        "    \"\"\"\n",
+        "    Симулирует парадокс дней рождения методом Монте-Карло.\n",
+        "\n",
+        "    :param iterations: Количество повторений эксперимента (симуляций).\n",
+        "    :param people: Количество человек в исследуемой группе (по умолчанию 23).\n",
+        "    :return: Процент случаев обнаружения хотя бы одного совпадения (float).\n",
+        "    \"\"\"\n",
+        "\n",
+        "    #если людей больше дней, то точно есть совпадение\n",
+        "    total = 336\n",
+        "    if people > total:\n",
+        "        return 100.0\n",
+        "\n",
+        "    count = 0\n",
+        "\n",
+        "    for _ in range(iterations):\n",
+        "        #random по birthdays\n",
+        "        birthdays = [\n",
+        "            random.randint(1, total) for _ in range(people)\n",
+        "        ]\n",
+        "          #проверка есть ли совпадения\n",
+        "        if len(set(birthdays)) < len(birthdays):\n",
+        "            count += 1\n",
+        "\n",
+        "    procent = (count / iterations) * 100.0\n",
+        "    return procent\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "PjV8w9IQL8y4"
+      },
+      "execution_count": 13,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "count = 10000\n",
+        "\n",
+        "print(\"=== Результаты для групп от 10 до 60 человек ===\")\n",
+        "for size in range(10, 65, 5):\n",
+        "    a = birthday(count, size)\n",
+        "    print(\n",
+        "        f\"Группа из {size} человек: вероятность совпадения = {a:.2f}%\"\n",
+        "    )"
+      ],
+      "metadata": {
+        "id": "C1XaRE6kQ2Nm",
+        "outputId": "6bc05ca2-d94a-4f62-af06-7ef968e1b5ea",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 15,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "=== Результаты для групп от 10 до 60 человек ===\n",
+            "Группа из 10 человек: вероятность совпадения = 13.21%\n",
+            "Группа из 15 человек: вероятность совпадения = 26.47%\n",
+            "Группа из 20 человек: вероятность совпадения = 44.34%\n",
+            "Группа из 25 человек: вероятность совпадения = 60.19%\n",
+            "Группа из 30 человек: вероятность совпадения = 73.55%\n",
+            "Группа из 35 человек: вероятность совпадения = 83.55%\n",
+            "Группа из 40 человек: вероятность совпадения = 90.80%\n",
+            "Группа из 45 человек: вероятность совпадения = 95.11%\n",
+            "Группа из 50 человек: вероятность совпадения = 97.71%\n",
+            "Группа из 55 человек: вероятность совпадения = 99.10%\n",
+            "Группа из 60 человек: вероятность совпадения = 99.56%\n"
+          ]
+        }
       ]
     }
   ]
