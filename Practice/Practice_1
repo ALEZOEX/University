@@ -152,10 +152,10 @@
       "execution_count": 9,
       "metadata": {
         "id": "-fE6IUbrCNlR",
-        "outputId": "736a665e-3987-4b6b-d72f-bebeb26434d3",
         "colab": {
           "base_uri": "https://localhost:8080/"
-        }
+        },
+        "outputId": "736a665e-3987-4b6b-d72f-bebeb26434d3"
       },
       "outputs": [
         {
@@ -172,7 +172,8 @@
         "\n",
         "\n",
         "def monty_hall(iterations: int) -> None:\n",
-        "    \"\"\"Моделирует парадокс Монти Холла и выводит вероятности выигрыша.\n",
+        "    \"\"\"\n",
+        "    Моделирует парадокс Монти Холла и выводит вероятности выигрыша.\n",
         "\n",
         "    :param iterations: Количество симулируемых раундов (игр).\n",
         "    \"\"\"\n",
@@ -342,7 +343,7 @@
       "source": [
         "count = 10000\n",
         "\n",
-        "print(\"=== Результаты для групп от 10 до 60 человек ===\")\n",
+        "print(\"=-=-= Результаты для групп от 10 до 60 человек =-=-=\")\n",
         "for size in range(10, 65, 5):\n",
         "    a = birthday(count, size)\n",
         "    print(\n",
@@ -350,11 +351,11 @@
         "    )"
       ],
       "metadata": {
-        "id": "C1XaRE6kQ2Nm",
-        "outputId": "6bc05ca2-d94a-4f62-af06-7ef968e1b5ea",
         "colab": {
           "base_uri": "https://localhost:8080/"
-        }
+        },
+        "id": "C1XaRE6kQ2Nm",
+        "outputId": "6bc05ca2-d94a-4f62-af06-7ef968e1b5ea"
       },
       "execution_count": 15,
       "outputs": [
